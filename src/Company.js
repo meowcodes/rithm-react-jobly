@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import JoblyApi from './JoblyAPI';
+import JobCard from './JobCard';
 
 /**
  * Recieves ONE company data from API request
@@ -26,23 +27,29 @@ class Company extends Component {
 
   render() {
     const company = this.state.data;
-    // const jobs = this.state.data.jobs;
+    let jobs;
+    
+    if (!this.state.loading) {
+      jobs = this.state.data.jobs.map((job) => 
+      <JobCard data={job}/> )
+    }
 
     return (
       <div className="Company">
         { this.state.loading
           ? <p>Loading...</p>
-          : <div><div>
-          <p className="Company-name">
-            { company.name }
-          </p>
-          <p className="Company-desc">
-            { company.description }
-          </p>
-          </div>
-          <div className="Company-jobs">
-          
-          </div>
+          : <div>
+              <p className="Company-name">
+                { company.name }
+              </p>
+
+              <p className="Company-desc">
+                { company.description }
+              </p>
+
+              <div className="Company-jobs">
+                {jobs}
+              </div>
           </div>
         } 
         
