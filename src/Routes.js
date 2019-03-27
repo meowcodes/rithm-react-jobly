@@ -55,6 +55,7 @@ class Routes extends Component {
                         path="/profile" 
                         render={() => <Profile/>}
                     />
+                    <Redirect to="/"/>
 
                 </Switch>
             </div>
