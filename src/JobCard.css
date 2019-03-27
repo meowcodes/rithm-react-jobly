@@ -12,7 +12,7 @@
 }
 
 .JobCard:hover {
-  box-shadow: 0px 0px 3px turquoise;
+  box-shadow: 0px 0px 3px gainsboro;
 }
 
 .JobCard button {

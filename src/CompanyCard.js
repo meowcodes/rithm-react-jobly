@@ -11,10 +11,16 @@ class CompanyCard extends Component {
 
   render() {
     const company = this.props.data;
+
     return (
       <Link className="CompanyCard-link" to={`/companies/${ company.handle }`}>
         <div className="CompanyCard">
-          <img className="CompanyCard-logo" src={ company.logo_url} alt={ company.name }/>
+        {company.logo_url ? 
+
+          <img className="CompanyCard-logo" src={ company.logo_url } alt={ company.name }/> :
+
+          <i className="far fa-building CompanyCard-logo"></i>
+         }
           <p className="CompanyCard-name">
             { company.name }
           </p>

@@ -31,7 +31,7 @@ class Company extends Component {
     
     if (!this.state.loading) {
       jobs = this.state.data.jobs.map((job) => 
-      <JobCard data={job}/> )
+      <JobCard data={job} key={job.id}/> )
     }
 
     return (
