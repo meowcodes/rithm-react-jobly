@@ -14,14 +14,14 @@ class Companies extends Component {
     super(props);
     this.state = {
       loading: true,
-      data: []
+      data: [] //FIXME: Improve name
     }
     this.updateQuery = this.updateQuery.bind(this)
   }
 
   // get company data from API
   async componentDidMount() {
-    let data = await JoblyApi.getCompanies()
+    let data = await JoblyApi.getCompanies() // FIXME: TRY CATCH 
 
     this.setState({
       data: data,
@@ -31,9 +31,9 @@ class Companies extends Component {
 
   // updates query make another API req
   async updateQuery(query) {
-    let searchData = await JoblyApi.getCompanies({"search": query})
+    let searchResults = await JoblyApi.getCompanies({"search": query})
     this.setState({
-      data: searchData
+      data: searchResults
     });
   }
 

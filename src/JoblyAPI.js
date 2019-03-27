@@ -3,6 +3,7 @@ import axios from 'axios';
 const BASE_URL = "http://localhost:3001/"
 const TESTING_TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1lb3ciLCJpYXQiOjE1NTM3MDU3NjV9.7GcCe3M9FjTcuLWdfw24SeTHU_ygSe9EP7LEOO_g344"
 
+// FIXME: Document w/ docstrings
 
 class JoblyApi {
   static async request(endpoint, paramsOrData = {}, verb = "get") {

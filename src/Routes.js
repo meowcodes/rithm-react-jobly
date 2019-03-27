@@ -23,7 +23,7 @@ class Routes extends Component {
                     <Route 
                         exact 
                         path="/companies/:handle" 
-                        render={(rtProps) => <Company handle={ rtProps.match.params.handle }/>} //FIXME: add comp handle
+                        render={(rtProps) => <Company handle={ rtProps.match.params.handle }/>} 
                     />
 
                     <Route 
@@ -55,6 +55,7 @@ class Routes extends Component {
                         path="/profile" 
                         render={() => <Profile/>}
                     />
+                    
                     <Redirect to="/"/>
 
                 </Switch>
