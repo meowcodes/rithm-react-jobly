@@ -23,7 +23,7 @@ class Routes extends Component {
                     <Route 
                         exact 
                         path="/companies/:handle" 
-                        render={() => <Company/>} //FIXME: add comp handle
+                        render={(rtProps) => <Company handle={ rtProps.match.params.handle }/>} //FIXME: add comp handle
                     />
 
                     <Route 

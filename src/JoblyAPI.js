@@ -28,6 +28,7 @@ class JoblyApi {
   }
 
   static async getCompanies(params = {}) {
+    console.log("IN HELPER", params)
     let res = await this.request(`companies/`, params);
     return res.companies;
   }

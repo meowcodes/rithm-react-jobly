@@ -15,6 +15,7 @@ const {companyNewSchema, companyUpdateSchema} = require("../schemas");
 
 router.get("/", authRequired, async function (req, res, next) {
   try {
+    console.log("BODY:", req.body, "PARMS", req.params, "QUERY", req.query)
     const companies = await Company.findAll(req.query);
     return res.json({companies});
   }

@@ -21,8 +21,8 @@ class Companies extends Component {
 
   // get company data from API
   async componentDidMount() {
-    let data = (await JoblyApi.getCompanies())
-    console.log(JSON.stringify(data));
+    let data = await JoblyApi.getCompanies()
+
     this.setState({
       data: data,
       loading: false
@@ -31,7 +31,7 @@ class Companies extends Component {
 
   // updates query make another API req
   async updateQuery(query) {
-    let searchData = (await JoblyApi.getCompanies(query))
+    let searchData = await JoblyApi.getCompanies({"search": query})
     this.setState({
       data: searchData
     });
