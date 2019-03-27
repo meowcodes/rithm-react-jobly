@@ -1,0 +1,30 @@
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+
+/**
+ * Recieves ONE company data from Companies
+ * Renders a card with company data
+ * On click, routes to company details page
+ */
+
+class CompanyCard extends Component {
+
+  render() {
+    const company = this.props.data;
+    return (
+      <Link to={`/companies/${ company.handle }`}>
+        <div className="CompanyCard">
+          <img className="CompanyCard-logo" src={ company.logo_url} alt={ company.name }/>
+          <p className="CompanyCard-name">
+            { company.name }
+          </p>
+          <p className="CompanyCard-desc">
+            { company.description }
+          </p>
+        </div>
+      </Link>
+    );
+  }
+}
+
+export default CompanyCard;

@@ -1,9 +1,7 @@
 import axios from 'axios';
 
 const BASE_URL = "http://localhost:3001/"
-const TESTING_TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc" +
-"3RpbmciLCJpc19hZG1pbiI6ZmFsc2UsImlhdCI6MTU1MzcwMzE1M30" +
-"COmFETEsTxN_VfIlgIKw0bYJLkvbRQNgO1XCSE8NZ0U"
+const TESTING_TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1lb3ciLCJpYXQiOjE1NTM3MDU3NjV9.7GcCe3M9FjTcuLWdfw24SeTHU_ygSe9EP7LEOO_g344"
 
 
 class JoblyApi {
@@ -29,7 +27,7 @@ class JoblyApi {
     }
   }
 
-  static async getCompanies(params) {
+  static async getCompanies(params = {}) {
     let res = await this.request(`companies/`, params);
     return res.companies;
   }
