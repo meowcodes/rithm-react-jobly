@@ -1,0 +1,8 @@
+nav a.active {
+    font-weight: bold;
+}
+
+.NavBar {
+    background-color: turquoise;
+    color: aliceblue;
+}
