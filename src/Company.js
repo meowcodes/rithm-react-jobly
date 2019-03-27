@@ -13,30 +13,37 @@ class Company extends Component {
     super(props);
     this.state = {
       loading: true,
-      data: {}
+      companyData: {},
+      error: null
     }
   }
 
   async componentDidMount() {
-    let data = await JoblyApi.getCompany(this.props.handle);
-    this.setState({
-      data: data,
-      loading: false
-    });
+    try{
+      let data = await JoblyApi.getCompany(this.props.handle);
+      this.setState({
+        companyData: data,
+        loading: false
+      });
+    } catch(err) {
+      this.setState({
+        error: err
+      });
+    }
   }
 
   render() {
-    const company = this.state.data;
+    const company = this.state.companyData;
     let jobs;
-    
+  
     if (!this.state.loading) {
-      jobs = this.state.data.jobs.map((job) => 
-      <JobCard data={job} key={job.id}/> )
+      jobs = this.state.companyData.jobs.map( job => 
+        <JobCard title={job.title} salary={job.salary} equity={job.equity} key={ job.id }/>)
     }
 
     return (
       <div className="Company">
-        { this.state.loading
+        { this.state.error && this.state.loading
           ? <p>Loading...</p>
           : <div>
               <p className="Company-name">
@@ -52,7 +59,7 @@ class Company extends Component {
               </div>
           </div>
         } 
-        
+        { this.state.error && <p>Something happened</p>}
       </div>
     );
   }

@@ -10,23 +10,25 @@ import './CompanyCard.css';
 class CompanyCard extends Component {
 
   render() {
-    const company = this.props.data;
+    const { handle, logo_url, name, description }= this.props;
 
     return (
-      <Link className="CompanyCard-link" to={`/companies/${ company.handle }`}>
+      <Link className="CompanyCard-link" to={`/companies/${handle}`}>
         <div className="CompanyCard">
-        
-        {company.logo_url 
-          ? <img className="CompanyCard-logo" src={ company.logo_url } alt={ company.name }/> 
-          : <i className="far fa-building CompanyCard-logo"></i>
-         }
-         
+
+          {logo_url
+            ? <img className="CompanyCard-logo" src={logo_url} alt={name} />
+            : <i className="far fa-building CompanyCard-logo"></i>
+          }
+
           <p className="CompanyCard-name">
-            { company.name }
+            {name}
           </p>
+
           <p className="CompanyCard-desc">
-            { company.description }
+            {description}
           </p>
+
         </div>
       </Link>
     );

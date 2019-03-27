@@ -4,6 +4,9 @@ import Routes from './Routes'
 import NavBar from './NavBar'
 import './App.css';
 
+/**
+ * Renders NavBar and Routes
+ */
 class App extends Component {
   render() {
     return (

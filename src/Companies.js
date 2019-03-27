@@ -8,49 +8,61 @@ import CompanyCard from './CompanyCard';
  * Renders all/searched companies (CompanyCard) and search bar (Search)
  * Sends individual company data to CompanyCard
  */
-
 class Companies extends Component {
   constructor(props) {
     super(props);
     this.state = {
       loading: true,
-      data: [] //FIXME: Improve name
+      companiesData: [],
+      error: null
     }
     this.updateQuery = this.updateQuery.bind(this)
   }
 
   // get company data from API
   async componentDidMount() {
-    let data = await JoblyApi.getCompanies() // FIXME: TRY CATCH 
-
-    this.setState({
-      data: data,
-      loading: false
-    });
+    try {
+      let data = await JoblyApi.getCompanies() // FIXME: TRY CATCH 
+      this.setState({
+        companiesData: data,
+        loading: false
+      });
+    } catch(err) {
+      this.setState({
+        error: err
+      });
+    }
   }
 
   // updates query make another API req
   async updateQuery(query) {
-    let searchResults = await JoblyApi.getCompanies({"search": query})
-    this.setState({
-      data: searchResults
-    });
+    try {
+      let searchResults = await JoblyApi.getCompanies({"search": query})
+      this.setState({
+        companiesData: searchResults
+      });
+    } catch(err) {
+      this.setState({
+        error: err
+      });
+    }
   }
 
 
   render() {
-    const companies = this.state.data.map( company => 
-      <CompanyCard data={company} key={ company.handle }/>
+    const companies = this.state.companiesData.map( company => 
+      <CompanyCard handle={company.handle} logo_url={company.logo_url} name={company.name} description={company.description} key={ company.handle }/>
     )
     return (
       <div className="Companies">
-        { this.state.loading
+        { !this.state.error && this.state.loading
           ? <p>Loading...</p>
           : <div>
             <Search triggerUpdateQuery={this.updateQuery} />
             { companies }
           </div>
-        } 
+        }
+        { this.state.error && <p>Something happened</p>}
       </div>
     );
   }

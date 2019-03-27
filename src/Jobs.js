@@ -14,43 +14,57 @@ class Jobs extends Component {
     super(props);
     this.state = {
       loading: true,
-      data: []
+      jobData: [],
+      error: null
     }
     this.updateQuery = this.updateQuery.bind(this)
   }
 
   // get job data from API
   async componentDidMount() {
-    let data = await JoblyApi.getJobs()
+    try {
+      let data = await JoblyApi.getJobs()
 
-    this.setState({
-      data: data,
-      loading: false
-    });
+      this.setState({
+        jobData: data,
+        loading: false
+      });
+    } catch(err) {
+      this.setState({
+        error: err
+      });
+    }
   }
 
   // updates query make another API req
   async updateQuery(query) {
-    let searchData = await JoblyApi.getJobs({"search": query})
-    this.setState({
-      data: searchData
-    });
+    try {
+      let searchData = await JoblyApi.getJobs({"search": query})
+      this.setState({
+        jobData: searchData
+      });
+    } catch(err) {
+      this.setState({
+        error: err
+      });
+    }
   }
 
 
   render() {
-    const jobs = this.state.data.map( job => 
-      <JobCard data={job} key={ job.id }/>
+    const jobs = this.state.jobData.map( job => 
+      <JobCard title={job.title} salary={job.salary} equity={job.equity} key={ job.id }/>
     )
     return (
       <div className="jobs">
-        { this.state.loading
+        { !this.state.error && this.state.loading
           ? <p>Loading...</p>
           : <div>
             <Search triggerUpdateQuery={this.updateQuery} />
             { jobs }
           </div>
         } 
+        { this.state.error && <p>Something happened</p>}
       </div>
     );
   }

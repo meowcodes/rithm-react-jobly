@@ -8,20 +8,20 @@ import './JobCard.css';
 class JobCard extends Component {
 
   render() {
-    const job = this.props.data;
+    const { title, salary, equity } = this.props;
     return (
         <div className="JobCard">
             <div className="JobCard-text">
                 <p className="JobCard-title">
-                    { job.title }
+                    { title }
                 </p>
 
                 <p className="JobCard-salary">
-                    Salary: { job.salary }
+                    Salary: { salary }
                 </p>
 
                 <p className="JobCard-equity">
-                    Equity: { job.equity }
+                    Equity: { equity }
                 </p>
             </div>
             <button>APPLY</button>
