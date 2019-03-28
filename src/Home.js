@@ -9,7 +9,7 @@ class Home extends Component {
       <div className="Home">
             <h1>Jobly</h1>
             <h4>All the jobs in one, convenient place</h4>
-            {this.props.isLoggedIn
+            {this.props.currUser
             ? <h2>Welcome back!</h2>
             : <Link to="/login" className="Home-button">Login</Link>}
       </div>

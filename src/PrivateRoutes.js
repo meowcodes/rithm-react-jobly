@@ -22,7 +22,7 @@ class PrivateRoutes extends Component {
 
                 <Switch>
 
-                {!this.props.isLoggedIn && 
+                {!this.props.currUser && 
                     <Redirect to="/login"/>}
 
                     <Route 

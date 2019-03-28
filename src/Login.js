@@ -15,6 +15,7 @@ class Login extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  // send inputs to App.js
   async handleSubmit(evt) {
     evt.preventDefault();
     if(this.props.path === "/login"){
