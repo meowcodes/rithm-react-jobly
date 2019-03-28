@@ -51,11 +51,15 @@ class Companies extends Component {
 
   render() {
     const companies = this.state.companiesData.map( c => 
-                                          <CompanyCard handle={c.handle} 
-                                                        logo_url={c.logo_url} 
-                                                        name={c.name} 
-                                                        description={c.description} 
-                                                        key={c.handle}/>)
+      <CompanyCard 
+        handle={c.handle} 
+        logo_url={c.logo_url} 
+        name={c.name} 
+        description={c.description} 
+        key={c.handle}
+      />
+    );
+    
     return (
       <div className="Companies">
         { !this.state.error && this.state.loading

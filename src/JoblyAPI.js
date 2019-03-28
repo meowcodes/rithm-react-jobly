@@ -1,12 +1,12 @@
 import axios from "axios";
 
 const BASE_URL = "http://localhost:3001/"
-const TESTING_TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1lb3ciLCJpYXQiOjE1NTM3MDU3NjV9.7GcCe3M9FjTcuLWdfw24SeTHU_ygSe9EP7LEOO_g344"
+// const TESTING_TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1lb3ciLCJpYXQiOjE1NTM3MDU3NjV9.7GcCe3M9FjTcuLWdfw24SeTHU_ygSe9EP7LEOO_g344"
 
 /** Helper class to send API requests to server and return resulting data*/
 class JoblyApi {
   static async request(endpoint, paramsOrData = {}, verb = "get") {
-    paramsOrData._token = TESTING_TOKEN;
+    paramsOrData._token = localStorage.getItem("_token") || null;
 
     console.debug("API Call:", endpoint, paramsOrData, verb);
 
@@ -47,7 +47,7 @@ class JoblyApi {
 
   // login makes post request to /auth/login with username and password
   static async getTokenLogin(data) {
-    let res = await this.request(`auth/login`, data, "post");
+    let res = await this.request(`login/`, data, "post");
     return res.token;
   }
 
