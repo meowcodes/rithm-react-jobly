@@ -66,11 +66,14 @@ router.post("/", async function(req, res, next) {
 
 router.patch("/:username", ensureCorrectUser, async function(req, res, next) {
   try {
+    
     if ("username" in req.body || "is_admin" in req.body) {
       return next({status: 400, message: "Not allowed" });
     }
 
+
     const validation = validate(req.body, userUpdateSchema);
+  
     if (!validation.valid) {
       return next({
         status:400,
@@ -79,6 +82,7 @@ router.patch("/:username", ensureCorrectUser, async function(req, res, next) {
     }
 
     const user = await User.update(req.params.username, req.body);
+    
     return res.json({user});
   }
 

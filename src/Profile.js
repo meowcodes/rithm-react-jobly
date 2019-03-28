@@ -8,24 +8,32 @@ class Profile extends Component {
       first_name: this.props.first_name,
       last_name: this.props.last_name,
       email: this.props.email,
-      photo_url: this.props.photo_url,
+      photo_url: this.props.photo_url || "",
       password: "",
-      alert: "",
+      alert: null,
       error: null
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.hideAlert = this.hideAlert.bind(this);
   }
 
   // send inputs to App.js
   async handleSubmit(evt) {
     try{
       evt.preventDefault();
-      const {alert, ...patchData} = this.state;
+      const {alert, error, ...patchData} = this.state;
+
+      if (!patchData.photo_url) {
+        delete patchData.photo_url;
+      }
+
       await JoblyApi.updateUserInfo(this.props.username, patchData);
-      this.setState({error: null, alert: "User updated successfully!"})
+
+      this.setState({error: null, alert: "User updated successfully!"}, this.hideAlert)
+      
     } catch(err) {
-      this.setState({error: err, alert: "Update failed!"})
+      this.setState({error: err, alert: "Update failed!"}, this.hideAlert)
     }
   }
 
@@ -35,8 +43,13 @@ class Profile extends Component {
     })
   }
 
+  hideAlert() {
+    setTimeout(() => this.setState({alert: null}), 3000)
+  }
+
   render() {
-    const alert = this.state.alert;
+
+    const alert = this.state.alert ? <p>{this.state.alert}</p> : null;
 
     return (
       <div className="Profile">
@@ -63,6 +76,8 @@ class Profile extends Component {
               <input name="password" id="password" type="password" value={ this.state.password } onChange={ this.handleChange } required></input>
 
               <button>Submit</button> 
+              
+              <b> {alert} </b>
 
             </form>
             
