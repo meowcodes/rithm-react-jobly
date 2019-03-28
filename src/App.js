@@ -22,8 +22,11 @@ class App extends Component {
     this.handleApply = this.handleApply.bind(this);
   }
   
-  componentDidMount() {
-    this.updateCurrUser();
+  async componentDidMount() {
+    await this.updateCurrUser();
+    this.setState({
+      loading: false,
+    })
   }
   
 	async updateCurrUser() {
@@ -92,8 +95,14 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-          <NavBar currUser={ this.state.currUser } triggerLogout={ this.handleLogout } />
-          <Routes currUser={ this.state.currUser } triggerLogin={ this.handleLogin } triggerRegister={ this.handleRegister } triggerApply={ this.handleApply } />
+        { this.state.loading
+          ? <p>loading...</p>
+          : (<>
+            <NavBar currUser={ this.state.currUser } triggerLogout={ this.handleLogout } />
+            <Routes currUser={ this.state.currUser } triggerLogin={ this.handleLogin } triggerRegister={ this.handleRegister } triggerApply={ this.handleApply } />
+          </>)
+        }
+          
       </div>
     );
   }
