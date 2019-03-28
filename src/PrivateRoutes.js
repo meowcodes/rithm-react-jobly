@@ -50,9 +50,15 @@ class PrivateRoutes extends Component {
                     <Route 
                         exact 
                         path="/profile" 
-                        render={() => <Profile/>}
+                        render={() => <Profile 
+                            username={this.props.currUser.username}
+                            first_name={this.props.currUser.first_name}
+                            last_name={this.props.currUser.last_name}
+                            email={this.props.currUser.email}
+                            photo_url={this.props.currUser.photo_url}
+                            />}
                     />
-                    
+
                     <Redirect to="/"/>
 
                 </Switch>
