@@ -16,16 +16,15 @@ class NavBar extends Component {
 	}
 
 	render() {
-		
 		return ( 
-			<nav className = "NavBar" >
-				<NavLink exact to="/">Jobly</NavLink> 
+			<nav className="NavBar" >
+				<NavLink className="NavBar-logo" exact to="/">Jobly</NavLink> 
 				{ this.props.isLoggedIn
 					? <section>
 						<NavLink to="/companies">Companies</NavLink>
 						<NavLink exact to="/jobs">Jobs</NavLink>
 						<NavLink exact to="/profile">Profile</NavLink>
-						<button onClick={ this.logout }>Log Out</button>
+						<a onClick={ this.logout }>Log Out</a>
 					</section>
 					: <section>
 						<NavLink exact to="/login">Log In</NavLink>

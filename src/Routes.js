@@ -1,12 +1,9 @@
 import React, { Component} from 'react';
-import { Switch, Route, Redirect} from 'react-router-dom';
-import Companies from './Companies';
-import Company from './Company';
+import { Switch, Route} from 'react-router-dom';
 import Home from './Home';
-import Jobs from './Jobs';
 import Login from './Login';
-import Profile from './Profile';
 import JoblyApi from './JoblyAPI';
+import PrivateRoutes from './PrivateRoutes';
 
 
 // All routes within the application.
@@ -59,33 +56,13 @@ class Routes extends Component {
             <div className = "Routes" >
                 <Switch>
 
-                    <Route 
-                        exact 
-                        path="/companies" 
-                        render={() => <Companies
-                            
-                        />}
-                    />
 
-                    <Route 
-                        exact 
-                        path="/companies/:handle" 
-                        render={(rtProps) => <Company 
-                            handle={ rtProps.match.params.handle }
-                        />} 
-                    />
-
-                    <Route 
+                    <Route //NOTE: ALSO VALID WHEN LOGGED IN
                         exact 
                         path="/" 
-                        render={() => <Home/>}
+                        render={() => <Home isLoggedIn={this.props.isLoggedIn}/>}
                     />
 
-                    <Route 
-                        exact 
-                        path="/jobs" 
-                        render={() => <Jobs/>}
-                    />
 
                     <Route 
                         exact 
@@ -107,13 +84,13 @@ class Routes extends Component {
                         />}
                     />
 
-                    <Route 
-                        exact 
-                        path="/profile" 
-                        render={() => <Profile/>}
-                    />
                     
-                    <Redirect to="/"/>
+                    <Route 
+                        path="/" 
+                        render={() => <PrivateRoutes 
+                            isLoggedIn={ this.props.isLoggedIn }
+                        />} 
+                    />
 
                 </Switch>
             </div>
