@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import {NavLink} from 'react-router-dom';
 import './NavBar.css'
 
+/**For rendering links to all main pages 
+ * everywhere in the app */
 class NavBar extends Component {
 	render() {
 		return ( 

@@ -22,7 +22,7 @@ class Companies extends Component {
   // get company data from API
   async componentDidMount() {
     try {
-      let data = await JoblyApi.getCompanies() // FIXME: TRY CATCH 
+      let data = await JoblyApi.getCompanies()
       this.setState({
         companiesData: data,
         loading: false
@@ -50,9 +50,12 @@ class Companies extends Component {
 
 
   render() {
-    const companies = this.state.companiesData.map( company => 
-      <CompanyCard handle={company.handle} logo_url={company.logo_url} name={company.name} description={company.description} key={ company.handle }/>
-    )
+    const companies = this.state.companiesData.map( c => 
+                                          <CompanyCard handle={c.handle} 
+                                                        logo_url={c.logo_url} 
+                                                        name={c.name} 
+                                                        description={c.description} 
+                                                        key={c.handle}/>)
     return (
       <div className="Companies">
         { !this.state.error && this.state.loading

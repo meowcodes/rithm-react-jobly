@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import './JobCard.css';
-/**
- * Recieves ONE job data
- * Renders a card with job data
- */
 
+/**Recieves ONE job data
+ * Renders a card with job data*/
 class JobCard extends Component {
 
   render() {

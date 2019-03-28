@@ -5,9 +5,7 @@ import JobCard from './JobCard';
 /**
  * Recieves ONE company data from API request
  * Renders ONE company details
- * 
  */
-
 class Company extends Component {
   constructor(props) {
     super(props);
@@ -37,8 +35,11 @@ class Company extends Component {
     let jobs;
   
     if (!this.state.loading) {
-      jobs = this.state.companyData.jobs.map( job => 
-        <JobCard title={job.title} salary={job.salary} equity={job.equity} key={ job.id }/>)
+      jobs = this.state.companyData.jobs.map( j => 
+                                          <JobCard title={j.title} 
+                                                    salary={j.salary} 
+                                                    equity={j.equity} 
+                                                    key={j.id}/>)
     }
 
     return (

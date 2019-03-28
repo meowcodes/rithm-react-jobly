@@ -5,7 +5,6 @@ import React, { Component } from 'react';
  * Renders a search bar
  * Sends new query to Companies
  */
-
 class Search extends Component {
   constructor(props){
     super(props);

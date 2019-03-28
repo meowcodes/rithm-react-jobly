@@ -8,6 +8,7 @@ import Login from './Login';
 import Profile from './Profile';
 
 
+// All routes within the application.
 class Routes extends Component {
     render() {
         return ( 

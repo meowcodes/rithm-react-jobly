@@ -1,10 +1,9 @@
-import axios from 'axios';
+import axios from "axios";
 
 const BASE_URL = "http://localhost:3001/"
 const TESTING_TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1lb3ciLCJpYXQiOjE1NTM3MDU3NjV9.7GcCe3M9FjTcuLWdfw24SeTHU_ygSe9EP7LEOO_g344"
 
-// FIXME: Document w/ docstrings
-
+/** Helper class to send API requests to server and return resulting data*/
 class JoblyApi {
   static async request(endpoint, paramsOrData = {}, verb = "get") {
     paramsOrData._token = TESTING_TOKEN;
@@ -28,16 +27,19 @@ class JoblyApi {
     }
   }
 
+  /** gets all companies that match search query.*/
   static async getCompanies(params = {}) {
     let res = await this.request(`companies/`, params);
     return res.companies;
   }
 
+  /** gets 1 company via handle & Returns all company data/jobs */
   static async getCompany(handle) {
     let res = await this.request(`companies/${handle}`);
     return res.company;
   }
 
+   /** gets all jobs that match search query*/
   static async getJobs(params) {
     let res = await this.request(`jobs/`, params);
     return res.jobs;
