@@ -72,9 +72,6 @@ class Profile extends Component {
               <label htmlFor="photo_url">Photo URL</label>
               <input name="photo_url" id="photo_url" value={ this.state.photo_url } onChange={ this.handleChange }></input>
 
-              <label htmlFor="password">Password</label>
-              <input name="password" id="password" type="password" value={ this.state.password } onChange={ this.handleChange } required></input>
-
               <button>Submit</button> 
               
               <b> {alert} </b>

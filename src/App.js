@@ -19,6 +19,7 @@ class App extends Component {
     this.handleLogin = this.handleLogin.bind(this);
     this.handleLogout = this.handleLogout.bind(this);
     this.handleRegister = this.handleRegister.bind(this);
+    this.handleApply = this.handleApply.bind(this);
   }
   
   componentDidMount() {
@@ -75,13 +76,24 @@ class App extends Component {
     localStorage.removeItem("_token");
     this.updateCurrUser();
     this.props.history.push("/");
-	}
+  }
+  
+  async handleApply(id){
+    try {
+      await JoblyApi.getApplicationMsg(id);
+      await this.updateCurrUser()
+    } catch(err) {
+      this.setState({
+        error: err
+    });
+    }
+  }
   
   render() {
     return (
       <div className="App">
           <NavBar currUser={ this.state.currUser } triggerLogout={ this.handleLogout } />
-          <Routes currUser={ this.state.currUser } triggerLogin={ this.handleLogin } triggerRegister={ this.handleRegister }/>
+          <Routes currUser={ this.state.currUser } triggerLogin={ this.handleLogin } triggerRegister={ this.handleRegister } triggerApply={ this.handleApply } />
       </div>
     );
   }

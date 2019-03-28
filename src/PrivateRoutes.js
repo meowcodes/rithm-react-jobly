@@ -29,7 +29,6 @@ class PrivateRoutes extends Component {
                         exact 
                         path="/companies" 
                         render={() => <Companies
-                            
                         />}
                     />
 
@@ -38,13 +37,18 @@ class PrivateRoutes extends Component {
                         path="/companies/:handle" 
                         render={(rtProps) => <Company 
                             handle={ rtProps.match.params.handle }
+                            currJobs= { this.props.currUser.jobs }
+                            triggerApply={ this.props.triggerApply }
                         />} 
                     />
 
                     <Route 
                         exact 
                         path="/jobs" 
-                        render={() => <Jobs/>}
+                        render={() => <Jobs
+                            currJobs= { this.props.currUser.jobs }
+                            triggerApply={ this.props.triggerApply }
+                        />}
                     />
 
                     <Route 
@@ -56,7 +60,7 @@ class PrivateRoutes extends Component {
                             last_name={this.props.currUser.last_name}
                             email={this.props.currUser.email}
                             photo_url={this.props.currUser.photo_url}
-                            />}
+                        />}
                     />
 
                     <Redirect to="/"/>

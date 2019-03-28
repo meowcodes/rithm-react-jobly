@@ -31,15 +31,21 @@ class Company extends Component {
   }
 
   render() {
+    const appliedJobs = this.props.currJobs.map( job => job.id );
     const company = this.state.companyData;
     let jobs;
   
     if (!this.state.loading) {
-      jobs = this.state.companyData.jobs.map( j => 
-                                          <JobCard title={j.title} 
-                                                    salary={j.salary} 
-                                                    equity={j.equity} 
-                                                    key={j.id}/>)
+      jobs = this.state.companyData.jobs.map( job => 
+        <JobCard 
+          title={job.title} 
+          salary={job.salary} 
+          equity={job.equity}
+          key={ job.id }
+          applied={ appliedJobs.includes(job.id) }
+          triggerApply={ () => this.props.triggerApply(job.id) }
+        />
+      )
     }
 
     return (

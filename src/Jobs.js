@@ -50,10 +50,17 @@ class Jobs extends Component {
     }
   }
 
-
   render() {
+    const appliedJobs = this.props.currJobs.map( job => job.id );
     const jobs = this.state.jobData.map( job => 
-      <JobCard title={job.title} salary={job.salary} equity={job.equity} key={ job.id }/>
+      <JobCard 
+        title={job.title} 
+        salary={job.salary} 
+        equity={job.equity}
+        key={ job.id }
+        applied={ appliedJobs.includes(job.id) }
+        triggerApply={ () => this.props.triggerApply(job.id) }
+      />
     )
     return (
       <div className="jobs">

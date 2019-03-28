@@ -53,6 +53,7 @@ class Routes extends Component {
                         path="/" 
                         render={() => <PrivateRoutes 
                             currUser={ this.props.currUser }
+                            triggerApply={ this.props.triggerApply }
                         />} 
                     />
 
