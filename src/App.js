@@ -31,9 +31,7 @@ class App extends Component {
     let token = localStorage.getItem("_token")
     if(token){
       let username = decode(token).username;
-      console.log("USERNAME", username);
       currUser = await JoblyApi.getUserInfo(username);
-      console.log("CURR USER", currUser)
     } else {
       currUser = null;
     }
