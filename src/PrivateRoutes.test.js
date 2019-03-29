@@ -6,14 +6,17 @@ import { MemoryRouter } from 'react-router-dom';
 import PrivateRoutes from './PrivateRoutes';
 
 
-// // full mount
-// it('mounts without crashing', function() {
-//   mount(
-//     <MemoryRouter>
-//       <PrivateRoutes />
-//     </MemoryRouter>
-//   );
-// });
+// full mount
+it('mounts without crashing', function() {
+  shallow(
+    <MemoryRouter>
+      <PrivateRoutes 
+        currUser="test"
+        triggerApply={()=> null}
+        />
+    </MemoryRouter>
+  );
+});
 
 // snapshot test
 it('matches snapshot', function() {
