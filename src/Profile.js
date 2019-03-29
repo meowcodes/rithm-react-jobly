@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import JoblyApi from './JoblyAPI';
 
+
+/**
+ * renders a form allowing user to update their profile
+ * does not allow them to update their username or password
+ */
 class Profile extends Component {
   constructor(props) {
     super(props);
@@ -18,20 +23,22 @@ class Profile extends Component {
     this.hideAlert = this.hideAlert.bind(this);
   }
 
-  // send inputs to App.js
+  /**send inputs to App.js. Renders 
+   * alert into dom to let user know of success or failure
+   *  */ 
   async handleSubmit(evt) {
     try{
       evt.preventDefault();
       const {alert, error, ...patchData} = this.state;
 
-      if (!patchData.photo_url) {
+      if (!patchData.photo_url) { // server will reject if empty url is passed
         delete patchData.photo_url;
       }
 
       await JoblyApi.updateUserInfo(this.props.username, patchData);
 
       this.setState({error: null, alert: "User updated successfully!"}, this.hideAlert)
-      
+
     } catch(err) {
       this.setState({error: err, alert: "Update failed!"}, this.hideAlert)
     }
@@ -42,7 +49,7 @@ class Profile extends Component {
       [evt.target.name]: evt.target.value
     })
   }
-
+  // Hides alert after 3 seconds.
   hideAlert() {
     setTimeout(() => this.setState({alert: null}), 3000)
   }

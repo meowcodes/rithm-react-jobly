@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 
+/**
+ * Component that renders form to login 
+ * or register based on assigned props
+ */
 class Login extends Component {
 
   constructor(props) {
@@ -15,7 +19,7 @@ class Login extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  // send inputs to App.js
+  /** send inputs to App.js, redirects to /jobs after*/ 
   async handleSubmit(evt) {
     evt.preventDefault();
     if(this.props.path === "/login"){
@@ -41,8 +45,11 @@ class Login extends Component {
       <form className="Login" onSubmit={ this.handleSubmit }>
         <label htmlFor="username">Username</label>
         <input name="username" id="username" value={ this.state.username } onChange={ this.handleChange }></input>
+
         <label htmlFor="password">Password</label>
         <input name="password" id="password" type="password" value={ this.state.password } onChange={ this.handleChange }></input>
+
+        {/* conditional to turn form into registration form */}
         { this.props.path === "/register" &&
           <section>
             <label htmlFor="first_name">First name</label>

@@ -6,7 +6,7 @@ import Jobs from './Jobs';
 import Profile from './Profile';
 
 
-// All routes within the application.
+// Routes for loggedin users
 class PrivateRoutes extends Component {
     constructor(props) {
         super(props);
@@ -22,18 +22,18 @@ class PrivateRoutes extends Component {
 
                 <Switch>
 
-                {!this.props.currUser && 
+                {!this.props.currUser && //redirect user to login if not logged in
                     <Redirect to="/login"/>}
 
                     <Route 
-                        exact 
+                        exact // see all companies
                         path="/companies" 
                         render={() => <Companies
                         />}
                     />
 
                     <Route 
-                        exact 
+                        exact // see company details/jobs
                         path="/companies/:handle" 
                         render={(rtProps) => <Company 
                             handle={ rtProps.match.params.handle }
@@ -43,7 +43,7 @@ class PrivateRoutes extends Component {
                     />
 
                     <Route 
-                        exact 
+                        exact // see all jobs
                         path="/jobs" 
                         render={() => <Jobs
                             currJobs= { this.props.currUser.jobs }
@@ -52,7 +52,7 @@ class PrivateRoutes extends Component {
                     />
 
                     <Route 
-                        exact 
+                        exact // update profile
                         path="/profile" 
                         render={() => <Profile 
                             username={this.props.currUser.username}

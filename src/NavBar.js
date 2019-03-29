@@ -3,7 +3,9 @@ import {NavLink} from 'react-router-dom';
 import './NavBar.css'
 
 /**For rendering links to all main pages 
- * everywhere in the app */
+ * everywhere in the app
+ * changes based off whether user is/is not logged in
+ *  */
 class NavBar extends Component {
 
 	render() {

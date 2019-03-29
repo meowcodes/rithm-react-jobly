@@ -71,7 +71,6 @@ router.patch("/:username", ensureCorrectUser, async function(req, res, next) {
       return next({status: 400, message: "Not allowed" });
     }
 
-
     const validation = validate(req.body, userUpdateSchema);
   
     if (!validation.valid) {

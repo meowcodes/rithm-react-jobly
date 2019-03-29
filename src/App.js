@@ -22,6 +22,7 @@ class App extends Component {
     this.handleApply = this.handleApply.bind(this);
   }
   
+  // ensures currUser is updated prior to rendering page
   async componentDidMount() {
     await this.updateCurrUser();
     this.setState({
@@ -29,6 +30,8 @@ class App extends Component {
     })
   }
   
+  // helper function that decodes token to 
+  // set user's username in state
 	async updateCurrUser() {
     let currUser;
 
@@ -61,6 +64,7 @@ class App extends Component {
     }
   }
 
+  // handles registering new user. 
   async handleRegister(input){
     try {
       // get token and save to local storage
@@ -75,16 +79,20 @@ class App extends Component {
     }
   }
 
+  // removes token from local storage, updates currUser, 
+  // and re-routes user to homepage.
   handleLogout(){
     localStorage.removeItem("_token");
     this.updateCurrUser();
     this.props.history.push("/");
   }
   
+  // Sends note to server indicating that a job has been applied to. 
+  // Updates currUser in state.
   async handleApply(id){
     try {
       await JoblyApi.getApplicationMsg(id);
-      await this.updateCurrUser()
+      await this.updateCurrUser();
     } catch(err) {
       this.setState({
         error: err

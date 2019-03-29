@@ -16,6 +16,8 @@ class Company extends Component {
     }
   }
 
+  // gets company data and adds it to state. changes
+  // loading to false
   async componentDidMount() {
     try{
       let data = await JoblyApi.getCompany(this.props.handle);
@@ -31,7 +33,8 @@ class Company extends Component {
   }
 
   render() {
-    const appliedJobs = this.props.currJobs.map( job => job.id );
+    // set of job ids of jobs user has applied to
+    const appliedJobs = new Set(this.props.currJobs.map( job => job.id ));
     const company = this.state.companyData;
     let jobs;
   
@@ -42,7 +45,7 @@ class Company extends Component {
           salary={job.salary} 
           equity={job.equity}
           key={ job.id }
-          applied={ appliedJobs.includes(job.id) }
+          applied={ appliedJobs.has(job.id) }
           triggerApply={ () => this.props.triggerApply(job.id) }
         />
       )
@@ -66,7 +69,7 @@ class Company extends Component {
               </div>
           </div>
         } 
-        { this.state.error && <p>Something happened</p>}
+        { this.state.error && <p>Something went wrong</p>}
       </div>
     );
   }

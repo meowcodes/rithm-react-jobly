@@ -50,6 +50,7 @@ class Companies extends Component {
 
 
   render() {
+    // array of CompanyCard components
     const companies = this.state.companiesData.map( c => 
       <CompanyCard 
         handle={c.handle} 

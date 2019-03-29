@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './Home.css'
 
-/** Renders basic home component */
+/** Renders basic home component
+ * Changes based on user being logged in or not
+ */
 class Home extends Component {
   render() {
     return (
