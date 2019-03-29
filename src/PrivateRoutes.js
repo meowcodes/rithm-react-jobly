@@ -46,7 +46,7 @@ class PrivateRoutes extends Component {
                         exact // see all jobs
                         path="/jobs" 
                         render={() => <Jobs
-                            currJobs= { this.props.currUser.jobs }
+                            currJobs={ this.props.currUser.jobs }
                             triggerApply={ this.props.triggerApply }
                         />}
                     />

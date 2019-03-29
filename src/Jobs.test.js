@@ -6,18 +6,22 @@ import { MemoryRouter } from 'react-router-dom';
 import Jobs from './Jobs';
 
 
-// // full mount
-// it('mounts without crashing', function() {
-//   mount(
-//     <MemoryRouter>
-//       <Jobs />
-//     </MemoryRouter>
-//   );
-// });
+// full mount
+it('mounts without crashing', function() {
+  mount(
+    <MemoryRouter>
+      <Jobs 
+        currJobs={[]}
+        triggerApply={()=> null}/>
+    </MemoryRouter>
+  );
+});
 
-// // snapshot test
-// it('matches snapshot', function() {
-//   let wrapper = shallow(<Jobs />);
-//   let serialized = toJson(wrapper);
-//   expect(serialized).toMatchSnapshot();
-// });
+// snapshot test
+it('matches snapshot', function() {
+  let wrapper = shallow(<Jobs 
+                            currJobs={[]}
+                            triggerApply={()=> null}/>);
+  let serialized = toJson(wrapper);
+  expect(serialized).toMatchSnapshot();
+});
