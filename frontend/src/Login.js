@@ -23,12 +23,11 @@ class Login extends Component {
   async handleSubmit(evt) {
     evt.preventDefault();
     if(this.props.path === "/login"){
-
       await this.props.triggerLogin({
         username: this.state.username,
         password: this.state.password
       });
-    }else {
+    } else {
       await this.props.triggerRegister(this.state);
     }
     this.props.history.push("/jobs");

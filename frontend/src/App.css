@@ -37,6 +37,13 @@ button {
   border-radius: 7px;
 }
 
+button:disabled,
+button[disabled]{
+  background-color: rgba(161, 218, 213, 0.425);
+  color: white;
+  border: none;
+}
+
 section {
   margin-right: 0!important;
 }

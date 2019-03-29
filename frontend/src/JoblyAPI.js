@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3001";
+const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3001/";
 
 /** Helper class to send API requests to server and return resulting data*/
 class JoblyApi {
@@ -13,14 +13,13 @@ class JoblyApi {
     try {
       return (await axios({
         method: verb,
-        url: `${BASE_URL}${endpoint}`,
+        url: `${BASE_URL}${endpoint}`, 
         [verb === "get" ? "params" : "data"]: paramsOrData})).data;
         // axios sends query string data via the "params" key,
         // and request body data via the "data" key,
         // so the key we need depends on the HTTP verb
     }
     catch(err) {
-      debugger
       console.error("API Error:", err.response);
       let message = err.response.data.message;
       throw Array.isArray(message) ? message : [message];
@@ -47,7 +46,9 @@ class JoblyApi {
 
   // login makes post request to /auth/login with username and password
   static async getTokenLogin(data) {
-    let res = await this.request(`login/`, data, "post");
+    console.log('getLoginToken is running')
+    let res = await this.request(`login`, data, "post");
+    console.log('getLoginToken result', res.token)
     return res.token;
   }
 
