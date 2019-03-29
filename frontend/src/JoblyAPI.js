@@ -11,6 +11,7 @@ class JoblyApi {
     console.log("API Call:", endpoint, paramsOrData, verb);
 
     try {
+      console.log("WHAT IS URL?", `${BASE_URL}${endpoint}`)
       return (await axios({
         method: verb,
         url: `${BASE_URL}${endpoint}`, 
