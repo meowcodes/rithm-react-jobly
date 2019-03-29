@@ -1,3 +1,10 @@
+.Home {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 .Home-button {
     background-color: turquoise;
     padding: 0.5em 1em;

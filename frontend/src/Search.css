@@ -4,10 +4,6 @@
     position: relative;
 }
 
-input {
-    width: 550px;
-    display: inline-block;
-}
 
 button {
     display: inline-block;

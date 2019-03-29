@@ -8,6 +8,7 @@ class JoblyApi {
     paramsOrData._token = localStorage.getItem("_token") || null;
 
     console.debug("API Call:", endpoint, paramsOrData, verb);
+    console.log("API Call:", endpoint, paramsOrData, verb);
 
     try {
       return (await axios({
@@ -18,8 +19,8 @@ class JoblyApi {
         // and request body data via the "data" key,
         // so the key we need depends on the HTTP verb
     }
-
     catch(err) {
+      debugger
       console.error("API Error:", err.response);
       let message = err.response.data.message;
       throw Array.isArray(message) ? message : [message];

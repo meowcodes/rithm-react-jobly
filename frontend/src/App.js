@@ -24,7 +24,13 @@ class App extends Component {
   
   // ensures currUser is updated prior to rendering page
   async componentDidMount() {
-    await this.updateCurrUser();
+    try {
+      await this.updateCurrUser();
+    } catch(err) {
+      this.setState({
+        error: err
+      });
+    }
     this.setState({
       loading: false,
     })
