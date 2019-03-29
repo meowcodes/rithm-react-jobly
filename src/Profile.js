@@ -63,24 +63,29 @@ class Profile extends Component {
             <h1>Profile</h1>
 
             <form className="Profile" onSubmit={ this.handleSubmit }>
-
+              
               <label htmlFor="username">Username</label>
               <p>{this.props.username}</p>
-
+            <div>
               <label htmlFor="first_name">First name</label>
               <input name="first_name" id="first_name" value={ this.state.first_name } onChange={ this.handleChange }></input>
-
+            </div>
+            <div>
               <label htmlFor="last_name">Last name</label>
               <input name="last_name" id="last_name" value={ this.state.last_name } onChange={ this.handleChange }></input>
-
+            </div>
+            <div>
               <label htmlFor="email">Email</label>
+              <br></br>
               <input name="email" id="email" value={ this.state.email } onChange={ this.handleChange }></input>
-
+            </div>
+            <div>
               <label htmlFor="photo_url">Photo URL</label>
               <input name="photo_url" id="photo_url" value={ this.state.photo_url } onChange={ this.handleChange }></input>
-
+            </div>
+            <div>
               <button>Submit</button> 
-              
+            </div>
               <b> {alert} </b>
 
             </form>
