@@ -8,10 +8,8 @@ class JoblyApi {
     paramsOrData._token = localStorage.getItem("_token") || null;
 
     console.debug("API Call:", endpoint, paramsOrData, verb);
-    console.log("API Call:", endpoint, paramsOrData, verb);
 
     try {
-      console.log("WHAT IS URL?", `${BASE_URL}${endpoint}`)
       return (await axios({
         method: verb,
         url: `${BASE_URL}${endpoint}`, 
@@ -47,9 +45,7 @@ class JoblyApi {
 
   // login makes post request to /auth/login with username and password
   static async getTokenLogin(data) {
-    console.log('getLoginToken is running')
     let res = await this.request(`login`, data, "post");
-    console.log('getLoginToken result', res.token)
     return res.token;
   }
 
