@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import JoblyApi from './JoblyAPI';
+import JoblyApi from '../api/JoblyAPI';
 import JobCard from './JobCard';
 
 /**

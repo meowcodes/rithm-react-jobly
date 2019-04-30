@@ -3,7 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 import Home from './Home';
 import Login from './Login'
 import PrivateRoutes from './PrivateRoutes';
-import './Routes.css'
+import './styles/Routes.css'
 
 // All routes within the application.
 class Routes extends Component {

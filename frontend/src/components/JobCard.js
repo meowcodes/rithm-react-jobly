@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './JobCard.css';
+import './styles/JobCard.css';
 
 /**Recieves ONE job data
  * Renders a card with job data*/
