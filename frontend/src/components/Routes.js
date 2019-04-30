@@ -3,7 +3,6 @@ import { Switch, Route } from 'react-router-dom';
 import Home from './Home';
 import Login from './Login'
 import PrivateRoutes from './PrivateRoutes';
-import './styles/Routes.css'
 
 // All routes within the application.
 class Routes extends Component {
@@ -17,7 +16,7 @@ class Routes extends Component {
   render() {
 
     return (
-      <div className="Routes" >
+      <>
         <Switch>
 
 
@@ -56,7 +55,7 @@ class Routes extends Component {
           />
 
         </Switch>
-      </div>
+      </>
     );
   }
 }

@@ -1,26 +1,27 @@
-nav a.active {
-    font-weight: bold;
-}
-
 .NavBar {
-    background-color: turquoise;
-    color: aliceblue;
-    position: relative;
-    text-align: right;
+  position        : relative;
+  text-align      : right;
+  background-color: rgba(161, 218, 213, 0.425);
+  font-size       : 1rem;
+  height          : 2.5rem;
 }
 
-a {
-    display: inline-block;
-    position: relative;
-    padding: 0.5em 0.5em;
+#NavBar-logo{
+  left    : 1em;
+  position: absolute;
 }
 
-section {
-    display: inline-block;
-    margin-right: 1em; 
+.NavBar section {
+  display     : inline-block;
+  margin-right: 1rem;
 }
 
-.NavBar-logo {
-    left: 1em;
-    position: absolute;
+.NavBar a {
+  display : inline-block;
+  position: relative;
+  padding : 0.5rem 0.5rem;
+}
+
+a.active {
+  font-weight: bold;
 }

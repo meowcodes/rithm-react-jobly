@@ -11,7 +11,7 @@ class NavBar extends Component {
 	render() {
 		return ( 
 			<nav className="NavBar" >
-				<NavLink className="NavBar-logo" exact to="/">Jobly</NavLink> 
+				<NavLink id="NavBar-logo" exact to="/">Jobly</NavLink> 
 				{ this.props.currUser
 					? <section>
 						<NavLink to="/companies">Companies</NavLink>

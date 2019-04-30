@@ -1,20 +1,20 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './styles/CompanyCard.css';
+
 /**
  * Recieves ONE company data from Companies
  * Renders a card with company data
  * On click, routes to company details page
  */
-
 class CompanyCard extends Component {
 
   render() {
     const { handle, logo_url, name, description }= this.props;
 
     return (
-      <Link className="CompanyCard-link" to={`/companies/${handle}`}>
-        <div className="CompanyCard">
+      <div className="CompanyCard">
+        <Link className="CompanyCard-link" to={`/companies/${handle}`}>
 
           {logo_url
             ? <img className="CompanyCard-logo" src={logo_url} alt={name} />
@@ -29,8 +29,8 @@ class CompanyCard extends Component {
             {description}
           </p>
 
-        </div>
-      </Link>
+        </Link>
+      </div>
     );
   }
 }

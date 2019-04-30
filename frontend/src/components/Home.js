@@ -9,10 +9,10 @@ class Home extends Component {
   render() {
     return (
       <div className="Home">
-        <h1>Jobly</h1>
-        <h4>All the jobs in one, convenient place</h4>
+        <span className="Home-title">Jobly</span>
+        <span className="Home-desc">All the jobs in one, convenient place</span>
         {this.props.currUser
-          ? <h2>Welcome back!</h2>
+          ? <span className="Home-greet">Welcome back!</span>
           : <Link to="/login" className="Home-button">Login</Link>}
       </div>
     );

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './styles/Login.css';
 
 /**
  * Component that renders form to login 

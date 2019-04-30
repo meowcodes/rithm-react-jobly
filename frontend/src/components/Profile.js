@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import JoblyApi from '../api/JoblyAPI';
-
+import './styles/Profile.css';
 
 /**
  * renders a form allowing user to update their profile
@@ -84,7 +84,7 @@ class Profile extends Component {
             <input name="photo_url" id="photo_url" value={this.state.photo_url} onChange={this.handleChange}></input>
           </div>
           <div>
-            <button>Submit</button>
+            <button>Save Changes</button>
           </div>
           <b> {alert} </b>
 

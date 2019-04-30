@@ -32,7 +32,7 @@ class Search extends Component {
       <div className="Search">
         <form onSubmit={ this.handleSubmit }>
           <input onChange={ this.handleChange } name="query" value={ this.state.query } placeholder="Enter search term..." />
-          <button>Submit</button>
+          <button className="Search-button">Submit</button>
         </form>
       </div>
     );

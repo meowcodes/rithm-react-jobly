@@ -1,16 +1,24 @@
 .Search {
-    width: 600px;
-    margin: 1.5em auto;
-    position: relative;
+  max-width   : 600px;
+  margin  : 1.5rem auto;
+  position: relative;
 }
 
-
-button {
-    display: inline-block;
-    width: 50px;
+.Search input {
+  display: inline-block;
 }
 
-form {
-    width: 600px;
-    display: inline-block;
+.Search-button {
+  display: inline-block;
+  width  : 50px;
+  margin: 1rem;
+  padding: 0.25rem;
+  background-color: inherit;
+  border: solid 1px gainsboro;
+  font-size: 1rem;
+}
+
+.Search-button:hover {
+  box-shadow: 0px 0px 3px turquoise;
+  border: solid 1px turquoise;
 }
