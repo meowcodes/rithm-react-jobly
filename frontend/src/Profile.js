@@ -25,11 +25,11 @@ class Profile extends Component {
 
   /**send inputs to App.js. Renders 
    * alert into dom to let user know of success or failure
-   *  */ 
+   *  */
   async handleSubmit(evt) {
-    try{
+    try {
       evt.preventDefault();
-      const {alert, error, ...patchData} = this.state;
+      const { alert, error, ...patchData } = this.state;
 
       if (!patchData.photo_url) { // server will reject if empty url is passed
         delete patchData.photo_url;
@@ -37,10 +37,10 @@ class Profile extends Component {
 
       await JoblyApi.updateUserInfo(this.props.username, patchData);
 
-      this.setState({error: null, alert: "User updated successfully!"}, this.hideAlert)
+      this.setState({ error: null, alert: "User updated successfully!" }, this.hideAlert)
 
-    } catch(err) {
-      this.setState({error: err, alert: "Update failed!"}, this.hideAlert)
+    } catch (err) {
+      this.setState({ error: err, alert: "Update failed!" }, this.hideAlert)
     }
   }
 
@@ -51,7 +51,7 @@ class Profile extends Component {
   }
   // Hides alert after 3 seconds.
   hideAlert() {
-    setTimeout(() => this.setState({alert: null}), 3000)
+    setTimeout(() => this.setState({ alert: null }), 3000)
   }
 
   render() {
@@ -60,36 +60,36 @@ class Profile extends Component {
 
     return (
       <div className="Profile">
-            <h1>Profile</h1>
+        <h1>Profile</h1>
 
-            <form className="Profile" onSubmit={ this.handleSubmit }>
-              
-              <label htmlFor="username">Username</label>
-              <p>{this.props.username}</p>
-            <div>
-              <label htmlFor="first_name">First name</label>
-              <input name="first_name" id="first_name" value={ this.state.first_name } onChange={ this.handleChange }></input>
-            </div>
-            <div>
-              <label htmlFor="last_name">Last name</label>
-              <input name="last_name" id="last_name" value={ this.state.last_name } onChange={ this.handleChange }></input>
-            </div>
-            <div>
-              <label htmlFor="email">Email</label>
-              <br></br>
-              <input name="email" id="email" value={ this.state.email } onChange={ this.handleChange }></input>
-            </div>
-            <div>
-              <label htmlFor="photo_url">Photo URL</label>
-              <input name="photo_url" id="photo_url" value={ this.state.photo_url } onChange={ this.handleChange }></input>
-            </div>
-            <div>
-              <button>Submit</button> 
-            </div>
-              <b> {alert} </b>
+        <form className="Profile" onSubmit={this.handleSubmit}>
 
-            </form>
-            
+          <label htmlFor="username">Username</label>
+          <p>{this.props.username}</p>
+          <div>
+            <label htmlFor="first_name">First name</label>
+            <input name="first_name" id="first_name" value={this.state.first_name} onChange={this.handleChange}></input>
+          </div>
+          <div>
+            <label htmlFor="last_name">Last name</label>
+            <input name="last_name" id="last_name" value={this.state.last_name} onChange={this.handleChange}></input>
+          </div>
+          <div>
+            <label htmlFor="email">Email</label>
+            <br></br>
+            <input name="email" id="email" value={this.state.email} onChange={this.handleChange}></input>
+          </div>
+          <div>
+            <label htmlFor="photo_url">Photo URL</label>
+            <input name="photo_url" id="photo_url" value={this.state.photo_url} onChange={this.handleChange}></input>
+          </div>
+          <div>
+            <button>Submit</button>
+          </div>
+          <b> {alert} </b>
+
+        </form>
+
       </div>
     );
   }

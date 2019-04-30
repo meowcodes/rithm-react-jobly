@@ -1,6 +1,8 @@
 .CompanyCard, 
 .CompanyCard-link {
-  width: 600px;
+  min-width: 300px;
+  width: 90%;
+  max-width: 720px;
   margin: 0em auto;
 }
 
